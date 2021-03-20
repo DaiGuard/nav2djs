@@ -55,7 +55,7 @@ NAV2D.Navigator = function(options) {
       goalMessage : {
         target_pose : {
           header : {
-            frame_id : '/map'
+            frame_id : 'map'
           },
           pose : pose
         }
@@ -122,7 +122,7 @@ NAV2D.Navigator = function(options) {
     });
   } else {
     robotMarker = new ROS2D.NavigationArrow({
-      size : 25,
+      size : 15,
       strokeSize : 1,
       fillColor : createjs.Graphics.getRGB(255, 128, 0, 0.66),
       pulse : true
@@ -138,11 +138,11 @@ NAV2D.Navigator = function(options) {
     // update the robots position on the map
     robotMarker.x = pose.x;
     robotMarker.y = -pose.y;
-    if (!initScaleSet) {
+    // if (!initScaleSet) {
       robotMarker.scaleX = 1.0 / stage.scaleX;
       robotMarker.scaleY = 1.0 / stage.scaleY;
       initScaleSet = true;
-    }
+    // }
     // change the angle
     robotMarker.rotation = stage.rosQuaternionToGlobalTheta(orientation);
     // Set visible
